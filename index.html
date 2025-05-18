@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Qpid - Welcome</title>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nunito&display=swap" rel="stylesheet">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body, html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Nunito', sans-serif;
+    scroll-behavior: smooth;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background: #000;
+    color: #FFF;
+    flex-shrink: 0;
+  }
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-container img {
+    width: 52px;
+    height: 43px;
+    flex-shrink: 0;
+  }
+  .logo-text {
+    font-family: 'Lobster', cursive;
+    font-size: 36px;
+    color: #F0F;
+  }
+  .nav-buttons {
+    display: flex;
+    gap: 20px;
+  }
+  .nav-buttons button {
+    background: none;
+    border: none;
+    color: #FFF;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .hero {
+    position: relative;
+    width: 100%;
+    padding-top: 65%;
+    overflow: hidden;
+  }
+  .hero img.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-right {
+    position: absolute;
+    top: 65%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3vw;
+  }
+  .overlay-image {
+    width: clamp(100px, 18vw, 300px);
+    height: auto;
+    aspect-ratio: 6 / 5;
+  }
+  .hero-text-container {
+    position: relative;
+    font-family: 'Lobster', cursive;
+    font-size: clamp(40px, 10vw, 160px);
+    font-weight: 400;
+    color: #F0F;
+    line-height: 1;
+  }
+  .hero-text-qpid {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-text-welcome {
+    position: absolute;
+    top: 90%;
+    right: 0%;
+    font-family: 'Nunito', sans-serif;
+    font-size: clamp(16px, 2vw, 30px);
+    color: #F0F;
+    z-index: 2;
+  }
+  .gradient-section {
+    width: 100%;
+    height: 638px;
+    flex-shrink: 0;
+    background: linear-gradient(180deg, #F0F 0%, #000 97.6%);
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+  .make-your-move-container {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .make-your-move {
+    font-family: 'Lobster', cursive;
+    font-size: clamp(48px, 7vw, 96px);
+    color: #000;
+    text-align: center;
+    width: 631px;
+
+  }
+  .dont-hesitate {
+    width: 631px;
+    position: absolute;
+    top: 35%;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    color: #000;
+    font-weight: 400;
+    z-index: 2;
+    text-align: right;
+  }
+  .sign-in-btn {
+    margin-top: 30px; 
+    width: 178px;
+    height: 66px;
+    flex-shrink: 0;
+    border-radius: 59px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .sign-in-btn span {
+    color: #FFF;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .new-section {
+    width: 1280px;
+    height: 700px;
+    border-bottom: 1px solid #707070;
+    background: #FFF;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 125px;
+    padding-top: 60px;
+  }
+  .new-section-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 418px;
+  }
+  .new-section-image {
+    width: 100%;
+    height: 230px;
+    border-radius: 32px;
+    background-size: cover;
+    background-position: center;
+    margin-top: 20px;
+  }
+  .new-section-subtitle {
+    margin-top: 20px;
+    color: #000;
+    font-family: 'Nunito', sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .new-section-description {
+    margin-top: 10px;
+    color: #000;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    word-wrap: break-word;
+  }
+  .new-section-left,
+  .new-section-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .new-section-text {
+    color: #000;
+    font-family: 'Lobster', cursive;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .new-section-dummy {
+    height: 117px;
+  }
+  .sign-in-section {
+    width: 1280px;
+    height: 255px;
+    flex-shrink: 0;
+    background: #FFF;
+    margin: 0 auto;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .button-text-wrapper {
+    width: 992px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .button-div {
+    width: 178px;
+    height: 66px;
+    flex-shrink: 0;
+    border-radius: 59px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  .button-div span {
+    color: #FFF;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .line-div {
+    width: 992px;
+    height: 0px;
+    flex-shrink: 0;
+    border-top: 1px solid #707070;
+    margin-bottom: 20px;
+  }
+  .info-text {
+    color: #000;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: left;
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo-container">
+    <img src="assets/logoheader.png" alt="Logo">
+    <div class="logo-text">Qpid</div>
+  </div>
+  <div class="nav-buttons">
+    <button id="about" onclick="scrollToAbout()">About</button>
+    <button onclick="window.location.href='LoginPage.tsx'">Sign In</button>
+  </div>
+</header>
+<div class="hero">
+  <img class="bg" src="assets/BGimage.png" alt="Background">
+  <div class="hero-right">
+    <img class="overlay-image" src="assets/logopage1.png" alt="Heart Icon">
+    <div class="hero-text-container">
+      <div class="hero-text-qpid">Qpid</div>
+      <div class="hero-text-welcome">welcome to</div>
+    </div>
+  </div>
+</div>
+<div class="gradient-section" id="about-section">
+  <div class="make-your-move-container">
+    <div class="dont-hesitate">Don’t hesitate!</div>
+    <div class="make-your-move">Make your move</div>
+  </div>
+  <div class="sign-in-btn" onclick="window.location.href='https://xhien445.github.io/Qpid_DMS4/'">
+    <span>Sign Up</span>
+  </div>
+</div>
+<div class="new-section">
+  <div class="new-section-block">
+    <div class="new-section-text">We’re not just for dating</div>
+    <div class="new-section-image" style="background-image: url('https://media.istockphoto.com/id/636379014/photo/hands-forming-a-heart-shape-with-sunset-silhouette.jpg?s=612x612&w=0&k=20&c=CgjWWGEasjgwia2VT7ufXa10azba2HXmUDe96wZG8F0=');"></div>
+    <div class="new-section-subtitle">Meet someone with Qpid</div>
+    <div class="new-section-description">
+      Find someone you actually want to date, then go ahead and Make the First Move. Make genuine connections, vibe over what you both love, and most importantly, have fun.
+    </div>
+  </div>
+  <div class="new-section-block">
+    <div class="new-section-dummy"></div>
+    <div class="new-section-image" style="background-image: url('https://media.istockphoto.com/id/1445226966/photo/girl-friends-hug-and-travel-summer-vacation-outdoors-on-safari-diverse-happy-gen-z-women.jpg?s=612x612&w=0&k=20&c=z_DETd4pW-4bdmIu57CDRqZ56Y6uydUl55VPRsoKXtM=');"></div>
+    <div class="new-section-subtitle">Meet up with new friends on Qpid map</div>
+    <div class="new-section-description">
+      Meet someone like you. Or unlike you. Make new friends and find new things to do together — whether you’re home or away.
+    </div>
+  </div>
+</div>
+<div class="sign-in-section">
+  <div class="button-text-wrapper">
+    <div class="button-div" onclick="window.location.href='https://xhien445.github.io/Qpid_DMS4/'">
+      <span>Sign Up</span>
+    </div>
+    <div class="line-div"></div>
+    <div class="info-text">
+      Please sign up and pay for the Qpid+ for the best experience
+    </div>
+  </div>
+</div>
+<script>
+  function scrollToAbout() {
+    document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
