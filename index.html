@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Qpid - Welcome</title>
 <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nunito&display=swap" rel="stylesheet">
+<script>
+  function detectDevice() {
+    const isMobile = /iPhone|iPad|iPod|Android|Phone|Mobile/i.test(navigator.userAgent);
+    if (isMobile || window.innerWidth < 1024) {
+      alert('This website is not accessible from mobile devices. Please use a PC or laptop.');
+      window.location.href = "nophoneallowed.html"; // Redirect to a dedicated mobile-restricted page
+    }
+  }
+</script>
 <style>
   * {
     margin: 0;
