@@ -7,10 +7,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nunito&display=swap" rel="stylesheet">
 <script>
   function detectDevice() {
-    const isMobile = /iPhone|iPad|iPod|Android|Phone|Mobile/i.test(navigator.userAgent);
-    if (isMobile || window.innerWidth < 1024) {
-      alert('This website is not accessible from mobile devices. Please use a PC or laptop.');
-      window.location.href = "nophoneallowed.html"; // Redirect to a dedicated mobile-restricted page
+    const isMobile = /iPhone|iPad|iPod|Android|Phone|Mobile/i.test(navigator.userAgent) || window.innerWidth < 1024;
+    if (isMobile) {
+      window.location.href = "nophoneallowed.html"; // Redirect to a dedicated page for mobile users
     }
   }
 </script>
@@ -137,7 +136,6 @@
     color: #000;
     text-align: center;
     width: 631px;
-
   }
   .dont-hesitate {
     width: 631px;
@@ -285,7 +283,7 @@
   }
 </style>
 </head>
-<body>
+<body onload="detectDevice()">
 <header>
   <div class="logo-container">
     <img src="assets/logoheader.png" alt="Logo">
